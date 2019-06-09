@@ -15,7 +15,7 @@ namespace PowerChord
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PowerWindow());
+            Application.Run(new PowerChordDialog());
         }
     }
 }

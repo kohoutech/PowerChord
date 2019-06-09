@@ -1,6 +1,6 @@
 ﻿/* ----------------------------------------------------------------------------
-PowerChord : a harmonizer plugin for Patchworker
-Copyright (C) 1998-2018  George E Greaney
+Patchworker : a midi patchbay
+Copyright (C) 1995-2019  George E Greaney
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -19,20 +19,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 
-namespace PowerChord
+using Transonic.MIDI;
+
+namespace PatchWorker.Graph
 {
-    public partial class PowerWindow : Form
+    public interface IPatchModifer
     {
-        public PowerWindow()
-        {
-            InitializeComponent();
-        }
+        //send MIDI message back to modifier unit
+        void sendMidiMsg(Message _msg);
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerChord", "PowerChord.csproj", "{B9E859FD-7D9D-4C51-925F-A5352D155566}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerChord", "PowerChord\PowerChord.csproj", "{B9E859FD-7D9D-4C51-925F-A5352D155566}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

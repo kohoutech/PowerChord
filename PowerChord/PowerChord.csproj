@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B9E859FD-7D9D-4C51-925F-A5352D155566}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PowerChord</RootNamespace>
     <AssemblyName>PowerChord</AssemblyName>
@@ -33,7 +33,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ENAML">
+      <HintPath>Plugin\bin\Release\ENAML.dll</HintPath>
+    </Reference>
+    <Reference Include="PatchPlugin">
+      <HintPath>Plugin\bin\Release\PatchPlugin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,13 +55,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PowerWindow.cs">
+    <Compile Include="MIDI\Engine\MidiTimer.cs" />
+    <Compile Include="MIDI\Engine\Transport.cs" />
+    <Compile Include="MIDI\Event.cs" />
+    <Compile Include="MIDI\MarkerMap.cs" />
+    <Compile Include="MIDI\Message.cs" />
+    <Compile Include="MIDI\MeterMap.cs" />
+    <Compile Include="MIDI\MidiFile.cs" />
+    <Compile Include="MIDI\Sequence.cs" />
+    <Compile Include="MIDI\System\InputDevice.cs" />
+    <Compile Include="MIDI\System\MidiSystem.cs" />
+    <Compile Include="MIDI\System\OutputDevice.cs" />
+    <Compile Include="MIDI\System\SystemUnit.cs" />
+    <Compile Include="MIDI\TempoMap.cs" />
+    <Compile Include="MIDI\Track.cs" />
+    <Compile Include="PowerChord.cs" />
+    <Compile Include="PowerChordDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PowerWindow.Designer.cs">
-      <DependentUpon>PowerWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -62,6 +82,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -72,6 +93,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MIDI\draft\api.txt" />
+    <Content Include="MIDI\draft\cakewalk.txt" />
+    <None Include="resources\onswitch.bmp" />
+    <None Include="resources\offswitch.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
