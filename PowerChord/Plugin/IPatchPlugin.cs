@@ -21,14 +21,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Origami.ENAML;
 
-using Transonic.MIDI;
-
-namespace PatchWorker.Graph
+namespace PatchWorker.Plugin
 {
-    public interface IPatchModifer
+    public interface IPatchPlugin
     {
-        //send MIDI message back to modifier unit
-        void sendMidiMsg(Message _msg);
+        //set plugin's modifier ref so plugin can callback to modifier unit
+        void setModifier(IPatchModifer modUnit);
+
+        //get plugin's name
+        String getName();
+
+        //get number of plugin inputs
+        int getInputCount();
+
+        //get number of plugin output
+        int getOutputCount();
+
+        //show plugin dialog when user clicks on patchbox title
+        void showPluginDialog();
+
+        //send MIDI msg to plugin; plugin will send response back to modifier's <sendMidiMessage> method
+        void handleMidiMessage(byte[] msg);
+
+        //load plugin specific settings from a patch file in ENAML format
+        void loadFromPatch(EnamlData data, string dataPath);
+
+        //save plugin specific settings to a patch file in ENAML format
+        void saveToPatch(EnamlData data, string dataPath);
     }
 }

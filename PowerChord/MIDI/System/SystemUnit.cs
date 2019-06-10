@@ -1,6 +1,6 @@
 ﻿/* ----------------------------------------------------------------------------
-Patchworker : a midi patchbay
-Copyright (C) 1995-2019  George E Greaney
+Transonic MIDI Library
+Copyright (C) 1995-2018  George E Greaney
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -22,38 +22,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Transonic.MIDI;
-
-namespace PatchWorker.Graph
+namespace Transonic.MIDI.System
 {
-    public class PatchPlugin
+    public abstract class SystemUnit
     {
-        //get plugin's name
-        public virtual String getName()
+        public String name;
+        public InputDevice inputDev;                    //connect from input device
+        public List<OutputDevice> outputDevList;        //connections to output devices
+
+        public SystemUnit(String _name)
         {
-            return "patchworker plugin";
+            name = _name;
+            inputDev = null;
+            outputDevList = new List<OutputDevice>();
         }
 
-        //get number of plugin inputs
-        public virtual int getInputCount()
-        {
-            return 1;
-        }
-
-        //get number of plugin output
-        public virtual int getOutputCount()
-        {
-            return 1;
-        }
-
-        //show plugin dialog when user clicks on patchbox title
-        public virtual void showPluginDialog()
+        //for connection to input devices
+        public virtual void receiveMessage(byte[] msg)
         {
         }
 
-        //send MIDI msg to plugin; plugin will send response back to modifier's <sendMidiMessage> method
-        public virtual void handleMidiMessage(Message msg)
+        //for connection to output devices
+        public virtual void sendMessage(byte[] msg)
         {
         }
     }
 }
+
+//Console.WriteLine("there's no sun in the shadow of the wizard");
