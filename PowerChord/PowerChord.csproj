@@ -36,6 +36,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon1.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ENAML">
       <HintPath>Plugin\bin\Release\ENAML.dll</HintPath>
@@ -74,6 +77,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="PowerChordDialog.resx">
+      <DependentUpon>PowerChordDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -95,8 +101,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icon1.ico" />
     <Content Include="MIDI\draft\api.txt" />
     <Content Include="MIDI\draft\cakewalk.txt" />
+    <Content Include="resources\Icon1.ico" />
     <None Include="resources\onswitch.bmp" />
     <None Include="resources\offswitch.bmp" />
   </ItemGroup>

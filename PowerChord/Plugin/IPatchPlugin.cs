@@ -39,8 +39,12 @@ namespace PatchWorker.Plugin
         //get number of plugin output
         int getOutputCount();
 
-        //show plugin dialog when user clicks on patchbox title
-        void showPluginDialog();
+        //show plugin dialog when user clicks on plugin box title
+        //send box title to plugin so that user can identify which dialog when multiple plugins added to canvas
+        void showPluginDialog(String title);
+
+        //clear plugin dialog when user deletes plugin box from canvas (or clears patch)
+        void closePluginDialog();
 
         //send MIDI msg to plugin; plugin will send response back to modifier's <sendMidiMessage> method
         void handleMidiMessage(byte[] msg);

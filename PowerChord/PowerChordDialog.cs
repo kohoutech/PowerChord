@@ -44,6 +44,7 @@ namespace PowerChord
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PowerChordDialog));
             this.btnHoldOn = new System.Windows.Forms.Button();
             this.lblChordHold = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -52,7 +53,7 @@ namespace PowerChord
             // 
             this.btnHoldOn.BackgroundImage = global::PowerChord.Properties.Resources.offswitch;
             this.btnHoldOn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnHoldOn.Location = new System.Drawing.Point(55, 59);
+            this.btnHoldOn.Location = new System.Drawing.Point(62, 46);
             this.btnHoldOn.Name = "btnHoldOn";
             this.btnHoldOn.Size = new System.Drawing.Size(30, 50);
             this.btnHoldOn.TabIndex = 0;
@@ -64,7 +65,7 @@ namespace PowerChord
             this.lblChordHold.AutoSize = true;
             this.lblChordHold.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChordHold.ForeColor = System.Drawing.Color.Black;
-            this.lblChordHold.Location = new System.Drawing.Point(35, 30);
+            this.lblChordHold.Location = new System.Drawing.Point(43, 25);
             this.lblChordHold.Name = "lblChordHold";
             this.lblChordHold.Size = new System.Drawing.Size(69, 15);
             this.lblChordHold.TabIndex = 1;
@@ -73,15 +74,17 @@ namespace PowerChord
             // PowerChordDialog
             // 
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(134, 146);
+            this.ClientSize = new System.Drawing.Size(154, 121);
             this.Controls.Add(this.lblChordHold);
             this.Controls.Add(this.btnHoldOn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PowerChordDialog";
             this.ShowInTaskbar = false;
-            this.Text = "Power Chord";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Power Chord-001";
             this.ResumeLayout(false);
             this.PerformLayout();
 

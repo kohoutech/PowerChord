@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 using Transonic.MIDI;
 using PatchWorker.Plugin;
@@ -35,12 +36,20 @@ namespace PowerChord
         public bool holdOn;
         List<int> chordNotes;
 
+        PowerChordDialog plugindlg;
+        int controlPanelX;
+        int controlPanelY;
+
         public PowerChord()
         {
             modifier = null;
             keysdown = new bool[128];
             switchOff();
             chordNotes = new List<int>();
+
+            plugindlg = null;
+            controlPanelX = 100;
+            controlPanelY = 100;
         }
 
         public void setModifier(IPatchModifer _modifier)
@@ -65,11 +74,35 @@ namespace PowerChord
 
         //- dialog methods ----------------------------------------------------
 
-        public void showPluginDialog()
+        //only show dialog once
+        public void showPluginDialog(String title)
         {
-            PowerChordDialog plugindlg = new PowerChordDialog(this);
-            //unitdlg.Icon = patchWork.patchWnd.Icon;
-            plugindlg.Show();
+            if (plugindlg == null)
+            {
+                plugindlg = new PowerChordDialog(this);
+                plugindlg.Text = title;
+                plugindlg.Location = new Point(controlPanelX, controlPanelY);
+                plugindlg.FormClosing += new System.Windows.Forms.FormClosingEventHandler(plugindlg_FormClosing);
+                plugindlg.Show();
+            }
+        }
+
+        void plugindlg_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        {
+            if (plugindlg != null)
+            {
+                controlPanelX = plugindlg.Location.X;
+                controlPanelY = plugindlg.Location.Y;
+                plugindlg = null;
+            }
+        }
+
+        public void closePluginDialog()
+        {
+            if (plugindlg != null)
+            {
+                plugindlg.Close();
+            }
         }
 
         public void switchOn()
@@ -159,12 +192,21 @@ namespace PowerChord
 
         public void loadFromPatch(Origami.ENAML.EnamlData data, string dataPath)
         {
-            //no specific data to load yet
+            String pcPath = dataPath + ".power-chord";
+            controlPanelX = data.getIntValue(pcPath + ".control-panel-x", 100);
+            controlPanelY = data.getIntValue(pcPath + ".control-panel-y", 100);
         }
 
         public void saveToPatch(Origami.ENAML.EnamlData data, string dataPath)
         {
-            //no specific data to save yet
+            String pcPath = dataPath + ".power-chord";
+            if (plugindlg != null) 
+            {
+                controlPanelX = plugindlg.Location.X;
+                controlPanelY = plugindlg.Location.Y;
+            }
+            data.setIntValue(pcPath + ".control-panel-x", controlPanelX);
+            data.setIntValue(pcPath + ".control-panel-y", controlPanelY);
         }
     }
 }
