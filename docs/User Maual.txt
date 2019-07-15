@@ -1,0 +1,20 @@
+PatchWorker User Manual outline
+-------------------------------
+Introduction
+
+Loading in PatchWorker
+
+User Interface
+  control panel
+
+Operation
+
+Using with other PatchWorker plugins
+
+Contact
+  upgrades
+  bug reporting
+  feature requests   
+
+Appendix A : Configuration File
+
